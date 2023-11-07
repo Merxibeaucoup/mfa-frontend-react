@@ -21,6 +21,16 @@ const RegisterLeft: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (
+      !formData.firstname ||
+      !formData.lastname ||
+      !formData.email ||
+      !formData.password
+    ) {
+      console.log("Please fill out all required fields");
+      return;
+    }
+
     try {
       const res = await userService.create(formData);
       if (res.success) {
