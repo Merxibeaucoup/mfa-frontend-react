@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Public Sans", sans-serif;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
