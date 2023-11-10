@@ -6,6 +6,7 @@ export interface IUser {
   email: string;
   password: string;
   mfaEnabled: boolean;
+  secretImageUri?: string; // only for mfaEnabled
 }
 
 export interface ApiResponse<T> {

@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import userService, { IUser } from "../../Services/userService";
 
-const RegisterLeft: React.FC = () => {
+interface RegisterLeftProps {
+  setShowQr: React.Dispatch<React.SetStateAction<boolean>>;
+  setImageData: React.Dispatch<React.SetStateAction<string | undefined>>;
+}
+
+const RegisterLeft: React.FC<RegisterLeftProps> = ({
+  setShowQr,
+  setImageData,
+}) => {
   const [formData, setFormData] = useState<IUser>({
     firstname: "",
     lastname: "",
@@ -35,6 +43,14 @@ const RegisterLeft: React.FC = () => {
       const res = await userService.create(formData);
       if (res.success) {
         console.log("User registered sucessfully ", res.data);
+
+        const uri: string | undefined = res?.data?.secretImageUri;
+
+        if (formData.mfaEnabled) {
+          setShowQr(true);
+          setImageData(uri);
+        }
+
         setFormData({
           firstname: "",
           lastname: "",
@@ -54,9 +70,10 @@ const RegisterLeft: React.FC = () => {
     <div>
       <h1>Registration form</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="firstname">
           First Name:
           <input
+            required
             type="text"
             name="firstname"
             value={formData.firstname}
@@ -64,9 +81,10 @@ const RegisterLeft: React.FC = () => {
           />
         </label>
         <br />
-        <label>
+        <label className="lastname">
           Last Name:
           <input
+            required
             type="text"
             name="lastname"
             value={formData.lastname}
@@ -74,9 +92,11 @@ const RegisterLeft: React.FC = () => {
           />
         </label>
         <br />
-        <label>
+
+        <label className="email">
           Email:
           <input
+            required
             type="email"
             name="email"
             value={formData.email}
@@ -84,9 +104,10 @@ const RegisterLeft: React.FC = () => {
           />
         </label>
         <br />
-        <label>
+        <label className="password">
           Password:
           <input
+            required
             type="password"
             name="password"
             value={formData.password}
@@ -94,7 +115,8 @@ const RegisterLeft: React.FC = () => {
           />
         </label>
         <br />
-        <label>
+
+        <label className="mfa">
           MFA Enabled:
           <input
             type="checkbox"
@@ -104,7 +126,7 @@ const RegisterLeft: React.FC = () => {
           />
         </label>
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit">Register &nbsp; &nbsp; &rarr;</button>
       </form>
     </div>
   );

@@ -22,11 +22,88 @@
       display: flex;
 
       &--left {
-        flex: 2;
+        flex: 1.3;
+
+        h1 {
+          font-size: 3rem;
+          font-weight: 600;
+          margin-bottom: 2rem;
+        }
+
+        form {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+          margin-top: 8rem;
+
+          .firstname {
+            grid-column: 1;
+            grid-row: 1/2;
+            width: 100%;
+          }
+
+          .lastname {
+            grid-column: 2;
+            grid-row: 1/2;
+            width: 100%;
+          }
+
+          .email {
+            grid-column: 1/3;
+            grid-row: 2/3;
+            width: 100%;
+          }
+          .password {
+            grid-column: 1/3;
+            grid-row: 3/4;
+            width: 50%;
+          }
+
+          .mfa {
+            grid-column: 1/3;
+            grid-row: 4/5;
+            width: 50%;
+            align-items: left;
+          }
+
+          button {
+            grid-column: 1/3;
+            // grid-row: 5/6;
+            width: max-content;
+            align-items: center;
+            border-radius: 12px;
+            border: solid 1px grey;
+            padding: 12px 20px;
+            text-transform: uppercase;
+
+            &:hover {
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            }
+          }
+
+          input {
+            border-radius: 6px;
+            border: solid 1px grey;
+            padding: 12px 20px;
+          }
+
+          input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+          }
+
+          label {
+            display: flex;
+            flex-direction: column;
+            color: rgb(146, 144, 144);
+            font-size: 1.3rem;
+          }
+        }
       }
 
       &--right {
         flex: 1;
+        background-color: red;
       }
     }
   }
