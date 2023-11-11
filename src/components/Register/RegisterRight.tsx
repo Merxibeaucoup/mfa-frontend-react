@@ -10,14 +10,18 @@ const RegisterRight: React.FC<RegisterRightProps> = ({ showQr, imageData }) => {
 
   return (
     <div>
-      <img src={imageData} alt="" />
+      {showQr && (
+        <>
+          <img src={imageData} alt="" />
 
-      <form>
-        <label>
-          <input type="text" />
-        </label>
-        <button>submit</button>
-      </form>
+          <form>
+            <label>
+              <input type="text" />
+            </label>
+            <button>submit</button>
+          </form>
+        </>
+      )}
     </div>
   );
 };
