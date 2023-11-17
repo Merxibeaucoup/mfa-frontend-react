@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import userService, { IUser } from "../../Services/userService";
+import { useNavigate } from "react-router-dom";
 
 interface RegisterLeftProps {
   setShowQr: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,6 +20,8 @@ const RegisterLeft: React.FC<RegisterLeftProps> = ({
     password: "",
     mfaEnabled: false,
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -53,6 +56,8 @@ const RegisterLeft: React.FC<RegisterLeftProps> = ({
           setImageData(uri);
           // setUserEmail(formData.email);
           localStorage.setItem("userEmail", formData.email);
+        } else {
+          navigate("/welcome");
         }
 
         setFormData({
