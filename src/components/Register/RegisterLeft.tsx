@@ -4,11 +4,13 @@ import userService, { IUser } from "../../Services/userService";
 interface RegisterLeftProps {
   setShowQr: React.Dispatch<React.SetStateAction<boolean>>;
   setImageData: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setUserEmail: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const RegisterLeft: React.FC<RegisterLeftProps> = ({
   setShowQr,
   setImageData,
+  // setUserEmail,
 }) => {
   const [formData, setFormData] = useState<IUser>({
     firstname: "",
@@ -49,6 +51,8 @@ const RegisterLeft: React.FC<RegisterLeftProps> = ({
         if (formData.mfaEnabled) {
           setShowQr(true);
           setImageData(uri);
+          // setUserEmail(formData.email);
+          localStorage.setItem("userEmail", formData.email);
         }
 
         setFormData({

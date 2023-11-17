@@ -1,4 +1,5 @@
 import axiosInstance from "./axiosInstance";
+import { ApiResponse } from "./axiosInstance";
 
 export interface IUser {
   firstname: string;
@@ -7,12 +8,6 @@ export interface IUser {
   password: string;
   mfaEnabled: boolean;
   secretImageUri?: string; // only for mfaEnabled
-}
-
-export interface ApiResponse<T> {
-  success: boolean;
-  data: T;
-  message?: string;
 }
 
 const userService = {
